@@ -12,10 +12,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from corsheaders.defaults import default_headers
+from dotenv import load_dotenv
 import os
-import environ
 
-environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -107,12 +106,15 @@ WSGI_APPLICATION = 'CImanage.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+load_dotenv()
+SECRET_KEY=os.getenv('SECRET_KEY')
+DEBUG=os.getenv('DEBUG') == 'True'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cimanage',
-        'USER': 'cimanage',
-        'PASSWORD': 'Passw0rd2011$%',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': 'ciprueba.postgres.database.azure.com',
         'PORT': '5432'
     }
