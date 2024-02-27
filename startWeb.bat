@@ -1,3 +1,3 @@
 echo Iniciando servidor Vue.js...
-cd C:\Users\Diego Segovia\Desktop\codes\Proyectos\CImanage2.0\Vue-django\vue-django
+cd Vue-django\vue-django
 npm run serve
